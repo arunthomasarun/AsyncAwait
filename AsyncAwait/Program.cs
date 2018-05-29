@@ -16,7 +16,7 @@ namespace AsyncAwait
     {
       Application.EnableVisualStyles();
       Application.SetCompatibleTextRenderingDefault(false);
-      Application.Run(new DownloadSites());
+      Application.Run(new DownloadSitesWithCancel());
     }
   }
 }
