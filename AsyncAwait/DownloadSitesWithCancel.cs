@@ -46,6 +46,7 @@ namespace AsyncAwait
 
     private async void btnAsyncDownlaod_Click(object sender, EventArgs e)
     {
+      cts = new CancellationTokenSource();
       Progress<ProgressReportModel> prm = new Progress<ProgressReportModel>();
       prm.ProgressChanged += Prm_ProgressChanged;
       Stopwatch sw = Stopwatch.StartNew();
