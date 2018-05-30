@@ -34,10 +34,10 @@ namespace AsyncAwait
       websites.Add("http://www.mathrubhumi.com/sports");
       websites.Add("http://www.manoramaonline.com/home.html");
       websites.Add("http://www.marunadanmalayali.com/");
-      //websites.Add("http://www.mathrubhumi.com/news/kerala/kevin-murder-case-dyfi-suspended-two-supporters-1.2844116");
-      //websites.Add("http://www.mathrubhumi.com/movies-music/news/irumbuthirai-controversial-scene-adhaar-car-digital-india-vishal-mithran-bjp-1.2844002/");
-      //websites.Add("http://www.marunadanmalayali.com/news/special-report/pinarayi-vijayan-share-venue-with-thanku-brother-110300");
-      //websites.Add("http://www.marunadanmalayali.com/news/special-report/pinarayi-vijayan-angry-with-asianet-news-reporter-110321");
+      websites.Add("http://www.mathrubhumi.com/news/kerala/kevin-murder-case-dyfi-suspended-two-supporters-1.2844116");
+      websites.Add("http://www.mathrubhumi.com/movies-music/news/irumbuthirai-controversial-scene-adhaar-car-digital-india-vishal-mithran-bjp-1.2844002/");
+      websites.Add("http://www.marunadanmalayali.com/news/special-report/pinarayi-vijayan-share-venue-with-thanku-brother-110300");
+      websites.Add("http://www.marunadanmalayali.com/news/special-report/pinarayi-vijayan-angry-with-asianet-news-reporter-110321");
       //websites.Add("http://www.marunadanmalayali.com/news/investigation/ankamali-new-born-baby-death-incident-110328");
       //websites.Add("http://www.marunadanmalayali.com/politics/state/kummanam-rajasekharan-governer-post-110256");
       
@@ -73,6 +73,8 @@ namespace AsyncAwait
         //ReportWebsiteInfo(wdm);
         prm.sitesDownloaded = wdm;
         prm.Percentage = (i * 100) / webUrl.Count;
+
+        progress.Report(prm);
       }
     }
 
