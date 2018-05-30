@@ -49,7 +49,14 @@ namespace AsyncAwait
       Progress<ProgressReportModel> prm = new Progress<ProgressReportModel>();
       prm.ProgressChanged += Prm_ProgressChanged;
       Stopwatch sw = Stopwatch.StartNew();
-      await RunDownloadAsync(prm);
+      try
+      {
+        await RunDownloadAsync(prm, cts.Token);
+      }
+      catch (OperationCanceledException)
+      {
+        txtResults.Text += "\r\n Task cancelled by the user!!! ";
+      }
       sw.Stop();
       txtResults.Text += "\r\n Time elapsed in ms: " + sw.ElapsedMilliseconds.ToString();
     }
@@ -60,14 +67,14 @@ namespace AsyncAwait
       ReportWebsiteInfo(e.sitesDownloaded);
     }
 
-    private async Task RunDownloadAsync(IProgress<ProgressReportModel> progress)
+    private async Task RunDownloadAsync(IProgress<ProgressReportModel> progress, CancellationToken ct)
     {
       List<string> webUrl = WebsiteList();
       ProgressReportModel prm = new ProgressReportModel();
       int i = 0;
       foreach (var item in webUrl)
       {
-
+        ct.ThrowIfCancellationRequested();
         WebsiteDataModel wdm = await Task.Run(() => DownloadSite(item));
         i += 1;
         //ReportWebsiteInfo(wdm);
